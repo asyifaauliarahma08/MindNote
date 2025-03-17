@@ -1,9 +1,7 @@
 package com.example.mindnote
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -25,7 +23,7 @@ class catatanku : AppCompatActivity() {
         imagecatatan.setOnClickListener { // Intent untuk berpindah ke RegisterActivity
             val intent: Intent = Intent(
                 this@catatanku,
-                penulisan::class.java
+                Penulisan::class.java
             )
             startActivity(intent)
         }
@@ -35,7 +33,7 @@ class catatanku : AppCompatActivity() {
         imagekalender.setOnClickListener { // Intent untuk berpindah ke RegisterActivity
             val intent: Intent = Intent(
                 this,
-                kalender::class.java
+                Kalender::class.java
             )
             startActivity(intent)
         }

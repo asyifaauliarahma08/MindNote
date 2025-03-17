@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "72941989759",
+    "project_id": "mindnote-14c94",
+    "storage_bucket": "mindnote-14c94.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:72941989759:android:3b0a6fc89956846be8f44a",
+        "android_client_info": {
+          "package_name": "com.example.mindnote"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "72941989759-ti4i87d53b8f9l6rl23jgqn2k3kl3lpc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mindnote",
+            "certificate_hash": "41d505a5f0956faa730ce19e457990717f05bdf5"
+          }
+        },
+        {
+          "client_id": "72941989759-b6cnb7nnmbh166sbomot00caaqs5amcl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhv-VlNKbu2F2Ex4yEEIzlHuu-Dq0rqZc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "72941989759-b6cnb7nnmbh166sbomot00caaqs5amcl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

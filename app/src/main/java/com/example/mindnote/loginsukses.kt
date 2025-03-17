@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -22,15 +23,12 @@ class loginsukses : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val textsukses  = findViewById<TextView>(R.id.txt_sukses)
-// Set OnClickListener untuk berpindah ke Register Screen
-        textsukses.setOnClickListener { // Intent untuk berpindah ke RegisterActivity
-            val intent: Intent = Intent(
-                this,
-                tampilanawal::class.java
-            )
-            startActivity(intent)
-        }
-    }
 
+        // Menunggu 3 detik sebelum pindah ke tampilanawal
+        Handler(Looper.getMainLooper()).postDelayed({
+            val intent = Intent(this, tampilanawal::class.java)
+            startActivity(intent)
+            finish() // Menutup activity ini agar tidak bisa kembali dengan tombol back
+        }, 1000) // 1000 ms = 1detik
+    }
 }

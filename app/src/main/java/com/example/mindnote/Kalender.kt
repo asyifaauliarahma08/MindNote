@@ -1,41 +1,38 @@
 package com.example.mindnote
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class login : AppCompatActivity() {
-    @SuppressLint("MissingInflatedId")
+class Kalender : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_kalender)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val button = findViewById<Button>(R.id.btn_login)
+        val imagebook = findViewById<ImageView>(R.id.img_book)
 // Set OnClickListener untuk berpindah ke Register Screen
-        button.setOnClickListener { // Intent untuk berpindah ke RegisterActivity
+        imagebook.setOnClickListener { // Intent untuk berpindah ke RegisterActivity
             val intent: Intent = Intent(
-                this,
-                loginsukses::class.java
+                this@Kalender,
+                catatanku::class.java
             )
             startActivity(intent)
         }
-        val textsignin = findViewById<TextView>(R.id.txt_createacc)
+        val imageaccount = findViewById<ImageView>(R.id.img_account)
 // Set OnClickListener untuk berpindah ke Register Screen
-        textsignin.setOnClickListener { // Intent untuk berpindah ke RegisterActivity
+        imageaccount.setOnClickListener { // Intent untuk berpindah ke RegisterActivity
             val intent: Intent = Intent(
-                this,
-                createaccount::class.java
+                this@Kalender,
+                profile::class.java
             )
             startActivity(intent)
         }

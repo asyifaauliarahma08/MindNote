@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         Handler().postDelayed({
-            val intent = Intent(this@MainActivity, login::class.java) // Ganti NextActivity dengan class tujuan Anda
+            val intent = Intent(this@MainActivity, Login::class.java) // Ganti NextActivity dengan class tujuan Anda
             startActivity(intent)
             finish() // Mengakhiri Activity saat ini
         }, 3000)

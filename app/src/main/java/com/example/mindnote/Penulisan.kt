@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class penulisan : AppCompatActivity() {
+class Penulisan : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -23,7 +23,7 @@ class penulisan : AppCompatActivity() {
 // Set OnClickListener untuk berpindah ke Register Screen
         imagecatatan.setOnClickListener { // Intent untuk berpindah ke RegisterActivity
             val intent: Intent = Intent(
-                this@penulisan,
+                this@Penulisan,
                 catatanku::class.java
             )
             startActivity(intent)
@@ -33,8 +33,8 @@ class penulisan : AppCompatActivity() {
 // Set OnClickListener untuk berpindah ke Register Screen
         imagekalender.setOnClickListener { // Intent untuk berpindah ke RegisterActivity
             val intent: Intent = Intent(
-                this@penulisan,
-                kalender::class.java
+                this@Penulisan,
+                Kalender::class.java
             )
             startActivity(intent)
         }
@@ -42,7 +42,7 @@ class penulisan : AppCompatActivity() {
 // Set OnClickListener untuk berpindah ke Register Screen
         imageaccount.setOnClickListener { // Intent untuk berpindah ke RegisterActivity
             val intent: Intent = Intent(
-                this@penulisan,
+                this@Penulisan,
                 profile::class.java
             )
             startActivity(intent)
