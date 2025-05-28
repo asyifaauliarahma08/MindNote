@@ -6,17 +6,57 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".profile">
+    android:background="#D1AC99"
+    android:backgroundTint="#EBDDAE"
+    tools:context=".Profile">
 
     <ImageView
         android:id="@+id/imageView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="500dp"
+        android:layout_height="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/textboxbawah" />
+
+    <ImageView
+        android:id="@+id/img_book"
+        android:layout_width="47dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="36dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.994"
+        app:srcCompat="@drawable/buku" />
+
+    <ImageView
+        android:id="@+id/img_kekalender"
+        android:layout_width="40dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/kalenderr" />
+
+    <ImageView
+        android:id="@+id/img_account"
+        android:layout_width="51dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.994"
+        app:srcCompat="@drawable/account" />
+
 
     <ImageView
         android:id="@+id/imageView13"
@@ -27,56 +67,64 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.135"
+        app:layout_constraintVertical_bias="0.169"
         app:srcCompat="@drawable/profil" />
 
-
+    <!-- Hapus EditText duplikat, pakai satu yang ini -->
     <EditText
         android:id="@+id/et_name"
-        android:layout_width="284dp"
-        android:layout_height="41dp"
+        android:layout_width="301dp"
+        android:layout_height="49dp"
         android:background="@drawable/textbox"
-        android:hint="Masukkan Nama"
+        android:hint="      Masukkan Nama"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.414" />
+        app:layout_constraintVertical_bias="0.432" />
+
 
     <EditText
-        android:id="@+id/et_email"
-        android:layout_width="284dp"
-        android:layout_height="41dp"
+        android:id="@+id/et_age"
+        android:layout_width="301dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/textbox"
-        android:hint="Masukkan Email"
+        android:hint="      Masukkan Umur"
+        android:inputType="number"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_name" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.566" />
+        app:srcCompat="@drawable/bentukatas" />
 
     <Button
         android:id="@+id/btn_save"
-        android:layout_width="117dp"
-        android:layout_height="43dp"
+        android:layout_width="114dp"
+        android:layout_height="51dp"
         android:backgroundTint="#A89862"
         android:text="Save"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.945"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0.715" />
 
     <Button
         android:id="@+id/btn_logout"
-        android:layout_width="212dp"
-        android:layout_height="45dp"
+        android:layout_width="142dp"
+        android:layout_height="54dp"
         android:backgroundTint="#A89862"
         android:text="Log Out"
         app:layout_constraintBottom_toBottomOf="parent"

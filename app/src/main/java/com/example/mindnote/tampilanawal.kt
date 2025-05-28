@@ -20,15 +20,11 @@ class tampilanawal : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val buttonawal = findViewById<ImageView>(R.id.btn_nulis)
-        buttonawal.setOnClickListener { // Berpindah ke Login Screen
-            val intent: Intent =
-                Intent(
-                    this@tampilanawal,
-                    catatanku::class.java
-                )
-            startActivity(intent)
+        val intent: Intent = Intent(this@tampilanawal, catatanku::class.java)
+        startActivity(intent)
+        finish()
+
+        startActivity(intent)
             finish()
         }
      }
-}

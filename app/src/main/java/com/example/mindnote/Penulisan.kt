@@ -1,51 +1,62 @@
 package com.example.mindnote
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.ImageView
-import androidx.activity.enableEdgeToEdge
+import android.widget.Button
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestore
 
 class Penulisan : AppCompatActivity() {
+    private lateinit var judulEditText: EditText
+    private lateinit var isiEditText: EditText
+    private lateinit var saveButton: Button
+    private lateinit var deleteButton: Button
+
+    private val db = FirebaseFirestore.getInstance()
+    private var docId: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_penulisan)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        judulEditText = findViewById(R.id.judulEditText)
+        isiEditText = findViewById(R.id.isiEditText)
+        saveButton = findViewById(R.id.saveButton)
+        deleteButton = findViewById(R.id.deleteButton)
+
+        docId = intent.getStringExtra("DOC_ID")
+
+        // Kalau dari catatan lama (edit)
+        if (docId != null) {
+            db.collection("catatan").document(docId!!).get().addOnSuccessListener {
+                judulEditText.setText(it.getString("judul"))
+                isiEditText.setText(it.getString("isi"))
+            }
         }
 
-        val imagecatatan = findViewById<ImageView>(R.id.img_book)
-// Set OnClickListener untuk berpindah ke Register Screen
-        imagecatatan.setOnClickListener { // Intent untuk berpindah ke RegisterActivity
-            val intent: Intent = Intent(
-                this@Penulisan,
-                catatanku::class.java
+        saveButton.setOnClickListener {
+            val data = hashMapOf(
+                "judul" to judulEditText.text.toString(),
+                "isi" to isiEditText.text.toString(),
+                "pinned" to false,
+                "tanggal" to FieldValue.serverTimestamp()
             )
-            startActivity(intent)
+
+            if (docId == null) {
+                db.collection("catatan").add(data)
+            } else {
+                db.collection("catatan").document(docId!!).update(data as Map<String, Any>)
+            }
+
+            finish()
         }
 
-        val imagekalender = findViewById<ImageView>(R.id.img_kalender)
-// Set OnClickListener untuk berpindah ke Register Screen
-        imagekalender.setOnClickListener { // Intent untuk berpindah ke RegisterActivity
-            val intent: Intent = Intent(
-                this@Penulisan,
-                Kalender::class.java
-            )
-            startActivity(intent)
-        }
-        val imageaccount = findViewById<ImageView>(R.id.img_account)
-// Set OnClickListener untuk berpindah ke Register Screen
-        imageaccount.setOnClickListener { // Intent untuk berpindah ke RegisterActivity
-            val intent: Intent = Intent(
-                this@Penulisan,
-                profile::class.java
-            )
-            startActivity(intent)
+        deleteButton.setOnClickListener {
+            docId?.let {
+                db.collection("catatan").document(it).delete()
+            }
+            finish()
         }
     }
 }

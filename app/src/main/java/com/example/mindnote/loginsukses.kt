@@ -24,7 +24,7 @@ class loginsukses : AppCompatActivity() {
             insets
         }
 
-        // Menunggu 3 detik sebelum pindah ke tampilanawal
+        // Menunggu 2 detik sebelum pindah ke tampilanawal
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this, tampilanawal::class.java)
             startActivity(intent)

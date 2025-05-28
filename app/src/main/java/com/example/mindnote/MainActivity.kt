@@ -22,6 +22,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, Login::class.java) // Ganti NextActivity dengan class tujuan Anda
             startActivity(intent)
             finish() // Mengakhiri Activity saat ini
-        }, 3000)
+        }, 2000)
     }
 }

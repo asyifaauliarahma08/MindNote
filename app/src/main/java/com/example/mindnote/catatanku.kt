@@ -2,50 +2,107 @@ package com.example.mindnote
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ListenerRegistration
 
-class catatanku : AppCompatActivity() {
+class catatanku : AppCompatActivity(), CatatanAdapter.OnItemClickListener {
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var addNoteButton: Button
+    private lateinit var adapter: CatatanAdapter
+    private val catatanList = mutableListOf<Catatan>()
+
+    private val db = FirebaseFirestore.getInstance()
+    private var listenerRegistration: ListenerRegistration? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_catatanku)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-        val imagecatatan = findViewById<ImageView>(R.id.img_catatan)
-// Set OnClickListener untuk berpindah ke Register Screen
-        imagecatatan.setOnClickListener { // Intent untuk berpindah ke RegisterActivity
-            val intent: Intent = Intent(
-                this@catatanku,
-                Penulisan::class.java
-            )
-            startActivity(intent)
+
+        recyclerView = findViewById(R.id.recyclerViewCatatan)
+        addNoteButton = findViewById(R.id.addNoteButton)
+
+        adapter = CatatanAdapter(catatanList, this)
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        addNoteButton.setOnClickListener {
+            startActivity(Intent(this, Penulisan::class.java))
         }
 
-        val imagekalender = findViewById<ImageView>(R.id.img_kekalender)
-// Set OnClickListener untuk berpindah ke Register Screen
-        imagekalender.setOnClickListener { // Intent untuk berpindah ke RegisterActivity
-            val intent: Intent = Intent(
-                this,
-                Kalender::class.java
-            )
-            startActivity(intent)
+        setupBottomNavigation()
+        loadData()
+    }
+
+    private fun setupBottomNavigation() {
+        val iconCatatan = findViewById<ImageView>(R.id.img_book)
+        val iconKalender = findViewById<ImageView>(R.id.img_kekalender)
+        val iconProfile = findViewById<ImageView>(R.id.img_account)
+
+        iconCatatan.setOnClickListener {
+            Toast.makeText(this, "Kamu sudah di halaman Catatan", Toast.LENGTH_SHORT).show()
         }
 
-        val imageacc = findViewById<ImageView>(R.id.img_account)
-// Set OnClickListener untuk berpindah ke Register Screen
-        imageacc.setOnClickListener { // Intent untuk berpindah ke RegisterActivity
-            val intent: Intent = Intent(
-                this@catatanku,
-                profile::class.java
-            )
-            startActivity(intent)
+        iconKalender.setOnClickListener {
+            if (getLocalClassName() != "Kalender") {
+                startActivity(Intent(this, Kalender::class.java))
+            }
         }
+
+        iconProfile.setOnClickListener {
+            Toast.makeText(this, "Klik Profile", Toast.LENGTH_SHORT).show() // Debug
+            startActivity(Intent(this, Profile::class.java))
+
+        }
+    }
+
+    private fun loadData() {
+        listenerRegistration = db.collection("catatan")
+            .orderBy("tanggal")
+            .addSnapshotListener { snapshots, e ->
+                if (e != null) {
+                    Toast.makeText(this@catatanku, "Gagal memuat data", Toast.LENGTH_SHORT).show()
+                    return@addSnapshotListener
+                }
+
+                val list = mutableListOf<Catatan>()
+                for (doc in snapshots!!) {
+                    val catatan = Catatan(
+                        id = doc.id,
+                        judul = doc.getString("judul") ?: "",
+                        isi = doc.getString("isi") ?: ""
+                    )
+                    list.add(catatan)
+                }
+
+                adapter.updateData(list)
+            }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        listenerRegistration?.remove()
+    }
+
+    override fun onItemClick(catatan: Catatan) {
+        val intent = Intent(this, Penulisan::class.java)
+        intent.putExtra("DOC_ID", catatan.id)
+        startActivity(intent)
+    }
+
+    override fun onItemDelete(catatan: Catatan) {
+        db.collection("catatan").document(catatan.id).delete()
+            .addOnSuccessListener {
+                Toast.makeText(this@catatanku, "Catatan dihapus", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener {
+                Toast.makeText(this@catatanku, "Gagal menghapus catatan", Toast.LENGTH_SHORT).show()
+            }
     }
 }
