@@ -3,34 +3,37 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D1AC99"
-    android:backgroundTint="#EBDDAE"
+    android:background="#EBDDAE"
     tools:context=".Profile">
 
+    <!-- Header atas -->
+
+    <!-- Icon profil -->
+
+    <!-- Nama -->
     <ImageView
         android:id="@+id/imageView21"
-        android:layout_width="500dp"
-        android:layout_height="64dp"
+        android:layout_width="454dp"
+        android:layout_height="77dp"
+        android:src="@drawable/textboxbawah"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/textboxbawah" />
+        app:layout_constraintTop_toTopOf="@+id/img_kekalender"
+        app:layout_constraintVertical_bias="0.56" />
 
     <ImageView
         android:id="@+id/img_book"
         android:layout_width="47dp"
         android:layout_height="49dp"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.994"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/buku" />
 
     <ImageView
@@ -54,84 +57,88 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.994"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/account" />
-
 
     <ImageView
         android:id="@+id/imageView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="115dp"
+        android:layout_height="137dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.169"
-        app:srcCompat="@drawable/profil" />
+        app:srcCompat="@drawable/profil"
+        tools:layout_editor_absoluteY="78dp"
+        tools:ignore="MissingConstraints" />
 
-    <!-- Hapus EditText duplikat, pakai satu yang ini -->
     <EditText
         android:id="@+id/et_name"
-        android:layout_width="301dp"
-        android:layout_height="49dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Masukkan Nama"
         android:background="@drawable/textbox"
-        android:hint="      Masukkan Nama"
+        android:padding="16dp"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView13"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.432" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-
+    <!-- Umur -->
     <EditText
         android:id="@+id/et_age"
-        android:layout_width="301dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/textbox"
-        android:hint="      Masukkan Umur"
-        android:inputType="number"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_name" />
-
-    <ImageView
-        android:id="@+id/imageView18"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Masukkan Umur"
+        android:inputType="number"
+        android:background="@drawable/textbox"
+        android:padding="16dp"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/et_name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bentukatas" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Tombol Save -->
+
+    <!-- Tombol Logout -->
+
+    <!-- Background bawah bar navigasi -->
 
     <Button
         android:id="@+id/btn_save"
-        android:layout_width="114dp"
-        android:layout_height="51dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
         android:backgroundTint="#A89862"
         android:text="Save"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.715" />
+        app:layout_constraintTop_toBottomOf="@id/et_age" />
 
     <Button
         android:id="@+id/btn_logout"
-        android:layout_width="142dp"
-        android:layout_height="54dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:backgroundTint="#A89862"
         android:text="Log Out"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.809" />
+        app:layout_constraintTop_toBottomOf="@id/btn_save" />
+
+    <!-- Icon buku -->
+
+    <!-- Icon kalender -->
+
+    <!-- Icon profil (aktif) -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -56,10 +56,12 @@ class catatanku : AppCompatActivity(), CatatanAdapter.OnItemClickListener {
         }
 
         iconProfile.setOnClickListener {
-            Toast.makeText(this, "Klik Profile", Toast.LENGTH_SHORT).show() // Debug
-            startActivity(Intent(this, Profile::class.java))
-
+            if (this::class.java.simpleName != "Profile") {
+                startActivity(Intent(this, Profile::class.java))
+                finish() // tutup halaman ini biar nggak numpuk
+            }
         }
+
     }
 
     private fun loadData() {

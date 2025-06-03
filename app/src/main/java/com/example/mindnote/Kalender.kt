@@ -58,8 +58,10 @@ class Kalender : AppCompatActivity() {
         iconProfile.setOnClickListener {
             if (this::class.java.simpleName != "Profile") {
                 startActivity(Intent(this, Profile::class.java))
+                finish() // tutup halaman ini biar nggak numpuk
             }
         }
+
     }
 
     private fun setupCalendar() {
