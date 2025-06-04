@@ -43,7 +43,7 @@ class catatanku : AppCompatActivity(), CatatanAdapter.OnItemClickListener {
     private fun setupBottomNavigation() {
         val iconCatatan = findViewById<ImageView>(R.id.img_book)
         val iconKalender = findViewById<ImageView>(R.id.img_kekalender)
-        val iconProfile = findViewById<ImageView>(R.id.img_account)
+        val iconProfile = findViewById<ImageView>(R.id.img_account    )
 
         iconCatatan.setOnClickListener {
             Toast.makeText(this, "Kamu sudah di halaman Catatan", Toast.LENGTH_SHORT).show()

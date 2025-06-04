@@ -61,7 +61,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/img_kekalender"
-        app:layout_constraintVertical_bias="0.56" />
+        app:layout_constraintVertical_bias="0.6" />
 
     <ImageView
         android:id="@+id/img_book"
